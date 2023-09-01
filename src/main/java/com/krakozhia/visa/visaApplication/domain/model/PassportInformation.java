@@ -1,5 +1,6 @@
-package com.krakozhia.visa.visaApplication.domain.info;
+package com.krakozhia.visa.visaApplication.domain.model;
 
+import com.krakozhia.visa.visaApplication.domain.info.FictionalCountry;
 import com.krakozhia.visa.visaApplication.domain.model.PassportInfoId;
 
 import java.time.LocalDate;

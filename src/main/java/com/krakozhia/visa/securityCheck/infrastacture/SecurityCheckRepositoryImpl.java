@@ -1,13 +1,13 @@
 package com.krakozhia.visa.securityCheck.infrastacture;
 
 import com.krakozhia.visa.common.UniqueIdGenerator;
-import com.krakozhia.visa.securityCheck.domain.SecurityCheckId;
-import com.krakozhia.visa.securityCheck.domain.SecurityCheckRepository;
-import com.krakozhia.visa.securityCheck.domain.SecurityCheck;
+import com.krakozhia.visa.securityCheck.domain.model.SecurityCheckId;
+import com.krakozhia.visa.securityCheck.domain.repository.SecurityCheckRepository;
+import com.krakozhia.visa.securityCheck.domain.model.SecurityCheck;
 import com.krakozhia.visa.securityCheck.infrastacture.jms.JmsSecurityCheckProducer;
 import com.krakozhia.visa.securityCheck.infrastacture.jms.entity.SecurityCheckMessageEntity;
 import com.krakozhia.visa.securityCheck.infrastacture.jpa.JpaSecurityCheckRepository;
-import com.krakozhia.visa.securityCheck.infrastacture.jpa.SecurityCheckEntity;
+import com.krakozhia.visa.securityCheck.infrastacture.jpa.entity.SecurityCheckEntity;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 

@@ -3,7 +3,7 @@ package com.krakozhia.visa.visaApplication.infrastacture;
 import com.krakozhia.visa.common.UniqueIdGenerator;
 import com.krakozhia.visa.common.exception.DomainException;
 import com.krakozhia.visa.visaApplication.domain.info.FictionalCountry;
-import com.krakozhia.visa.visaApplication.domain.info.PassportInformation;
+import com.krakozhia.visa.visaApplication.domain.model.PassportInformation;
 import com.krakozhia.visa.visaApplication.domain.model.*;
 import com.krakozhia.visa.visaApplication.domain.repository.VisaApplicationRepository;
 import com.krakozhia.visa.visaApplication.infrastacture.jpa.*;

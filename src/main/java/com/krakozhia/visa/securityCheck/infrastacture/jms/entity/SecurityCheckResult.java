@@ -1,6 +1,6 @@
-package com.krakozhia.visa.securityCheck.infrastacture.jms;
+package com.krakozhia.visa.securityCheck.infrastacture.jms.entity;
 
-import com.krakozhia.visa.securityCheck.domain.SecurityStatus;
+import com.krakozhia.visa.securityCheck.domain.model.SecurityStatus;
 import lombok.Data;
 
 @Data

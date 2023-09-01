@@ -1,5 +1,8 @@
-package com.krakozhia.visa.securityCheck.domain;
+package com.krakozhia.visa.securityCheck.domain.repository;
 
+
+import com.krakozhia.visa.securityCheck.domain.model.SecurityCheck;
+import com.krakozhia.visa.securityCheck.domain.model.SecurityCheckId;
 
 import java.util.Optional;
 

@@ -1,7 +1,9 @@
-package com.krakozhia.visa.visaApplication.domain.model;
+package com.krakozhia.visa.visaApplication.application.event;
 
-import com.krakozhia.visa.visaApplication.domain.info.PassportInformation;
+import com.krakozhia.visa.visaApplication.domain.model.PassportInformation;
 import com.krakozhia.visa.visaApplication.domain.info.VisaApplicationStatus;
+import com.krakozhia.visa.visaApplication.domain.model.Address;
+import com.krakozhia.visa.visaApplication.domain.model.Applicant;
 import org.springframework.context.ApplicationEvent;
 
 public class NotifyApplicantEvent extends ApplicationEvent {

@@ -4,9 +4,9 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.krakozhia.visa.common.exception.DomainException;
 import com.krakozhia.visa.securityCheck.application.SecurityCheckService;
-import com.krakozhia.visa.securityCheck.domain.SecurityCheckSource;
+import com.krakozhia.visa.securityCheck.domain.model.SecurityCheckSource;
+import com.krakozhia.visa.securityCheck.infrastacture.jms.entity.SecurityCheckResult;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
 

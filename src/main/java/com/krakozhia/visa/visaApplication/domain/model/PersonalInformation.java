@@ -1,4 +1,6 @@
-package com.krakozhia.visa.visaApplication.domain.info;
+package com.krakozhia.visa.visaApplication.domain.model;
+
+import com.krakozhia.visa.visaApplication.domain.info.Gender;
 
 import java.time.LocalDate;
 

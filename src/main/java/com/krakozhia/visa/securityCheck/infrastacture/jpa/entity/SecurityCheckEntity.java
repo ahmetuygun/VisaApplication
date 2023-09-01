@@ -1,8 +1,6 @@
-package com.krakozhia.visa.securityCheck.infrastacture.jpa;
+package com.krakozhia.visa.securityCheck.infrastacture.jpa.entity;
 
-import com.krakozhia.visa.securityCheck.domain.SecurityStatus;
-import com.krakozhia.visa.visaApplication.domain.info.VisaType;
-import com.krakozhia.visa.visaApplication.infrastacture.jpa.entity.VisaApplicationEntity;
+import com.krakozhia.visa.securityCheck.domain.model.SecurityStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -2,17 +2,18 @@ package com.krakozhia.visa.securityCheck.application;
 
 import com.krakozhia.visa.common.exception.DomainException;
 import com.krakozhia.visa.securityCheck.application.event.SecurityCheckResponseEvent;
-import com.krakozhia.visa.securityCheck.domain.*;
+import com.krakozhia.visa.securityCheck.domain.model.SecurityCheck;
+import com.krakozhia.visa.securityCheck.domain.model.SecurityCheckId;
+import com.krakozhia.visa.securityCheck.domain.model.SecurityCheckSource;
+import com.krakozhia.visa.securityCheck.domain.model.SecurityStatus;
+import com.krakozhia.visa.securityCheck.domain.repository.SecurityCheckRepository;
 import com.krakozhia.visa.securityCheck.infrastacture.SecurityCheckRepositoryImpl;
-import com.krakozhia.visa.securityCheck.infrastacture.jms.SecurityCheckResult;
+import com.krakozhia.visa.securityCheck.infrastacture.jms.entity.SecurityCheckResult;
 import com.krakozhia.visa.visaApplication.application.VisaApplicationService;
 import com.krakozhia.visa.visaApplication.application.event.SecurityCheckEvent;
-import com.krakozhia.visa.visaApplication.domain.model.VisaApplication;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.PlatformTransactionManager;
-import org.springframework.transaction.support.TransactionTemplate;
 
 @Service
 @Slf4j

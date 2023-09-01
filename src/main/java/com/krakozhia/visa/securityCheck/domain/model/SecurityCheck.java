@@ -1,4 +1,4 @@
-package com.krakozhia.visa.securityCheck.domain;
+package com.krakozhia.visa.securityCheck.domain.model;
 
 import com.krakozhia.visa.common.AggregateRoot;
 import com.krakozhia.visa.visaApplication.domain.info.VisaApplicationStatus;

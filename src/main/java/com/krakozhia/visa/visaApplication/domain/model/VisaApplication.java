@@ -2,8 +2,11 @@ package com.krakozhia.visa.visaApplication.domain.model;
 
 import com.krakozhia.visa.common.AggregateRoot;
 import com.krakozhia.visa.common.exception.DomainException;
-import com.krakozhia.visa.securityCheck.domain.SecurityStatus;
+import com.krakozhia.visa.securityCheck.domain.model.SecurityStatus;
+import com.krakozhia.visa.visaApplication.application.event.NotifyApplicantEvent;
 import com.krakozhia.visa.visaApplication.application.event.SecurityCheckEvent;
+import com.krakozhia.visa.visaApplication.application.event.VisaApprovedEvent;
+import com.krakozhia.visa.visaApplication.application.event.VisaRejectedEvent;
 import com.krakozhia.visa.visaApplication.domain.info.*;
 
 import java.time.LocalDate;

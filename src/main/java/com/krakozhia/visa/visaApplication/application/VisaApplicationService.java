@@ -2,16 +2,14 @@ package com.krakozhia.visa.visaApplication.application;
 
 import com.krakozhia.visa.common.exception.DomainException;
 import com.krakozhia.visa.securityCheck.application.event.SecurityCheckResponseEvent;
-import com.krakozhia.visa.visaApplication.domain.info.PassportInformation;
+import com.krakozhia.visa.visaApplication.domain.model.PassportInformation;
 import com.krakozhia.visa.visaApplication.domain.model.*;
 import com.krakozhia.visa.visaApplication.domain.repository.VisaApplicationRepository;
 import com.krakozhia.visa.visaApplication.infrastacture.VisaApplicationRepositoryImpl;
 import com.krakozhia.visa.visaApplication.infrastacture.rest.VisaApplicationRequest;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.transaction.support.TransactionTemplate;
 
 import java.time.LocalDate;
 
