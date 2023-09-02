@@ -1,6 +1,7 @@
 package com.krakozhia.visa.securityCheck.domain.model;
 
 import com.krakozhia.visa.common.AggregateRoot;
+import com.krakozhia.visa.securityCheck.application.event.SecurityCheckCompletedEvent;
 import com.krakozhia.visa.visaApplication.domain.info.VisaApplicationStatus;
 import com.krakozhia.visa.visaApplication.domain.model.VisaApplication;
 
@@ -33,16 +34,22 @@ public class SecurityCheck extends AggregateRoot<SecurityCheckId> {
         }
     }
 
-    public void applyNiaSecurityCheck(SecurityStatus status) {
+    public void finaliseSecurityCheck() {
+        SecurityCheckCompletedEvent checkResponseEvent = new SecurityCheckCompletedEvent(this, this.visaApplication().getId());
+        checkResponseEvent.setSecurityStatus(getOverallSecurityClearanceStatus());
+        registerEvent(checkResponseEvent);
+    }
 
+    public void applyNiaSecurityCheck(SecurityStatus status) {
+      this.niaSecurityCheckStatus = status;
     }
 
     public void applyHomelandSecurityCheck(SecurityStatus status) {
-
+        this.homelandSecurityCheckStatus = status;
     }
 
     public void applyInterpolSecurityCheck(SecurityStatus status) {
-
+        this.interpolSecurityCheckStatus = status;
     }
 
 
@@ -60,5 +67,16 @@ public class SecurityCheck extends AggregateRoot<SecurityCheckId> {
 
     public VisaApplication visaApplication() {
         return visaApplication;
+    }
+
+
+    public SecurityStatus getOverallSecurityClearanceStatus() {
+        if (this.homelandSecurityCheckStatus() == SecurityStatus.PASSED
+                && this.niaSecurityCheckStatus() == SecurityStatus.PASSED
+                && this.interpolSecurityCheckStatus() == SecurityStatus.PASSED) {
+            return SecurityStatus.PASSED;
+        } else {
+            return SecurityStatus.FAILED;
+        }
     }
 }

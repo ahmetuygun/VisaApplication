@@ -18,17 +18,14 @@ import java.util.Optional;
 
 @Service
 public class VisaApplicationRepositoryImpl implements VisaApplicationRepository {
-    private final AddressEntityRepository addressEntityRepository;
-    private final ApplicantEntityRepository applicantEntityRepository;
-    private final PassportEntityRepository passportEntityRepository;
-    private final PaymentEntityRepository paymentEntityRepository;
-    private final VisaApplicationEntityRepository visaApplicationEntityRepository;
-
-
+    private final JpaAddressEntityRepository addressEntityRepository;
+    private final JpaApplicantEntityRepository applicantEntityRepository;
+    private final JpaPassportEntityRepository passportEntityRepository;
+    private final JpaPaymentEntityRepository paymentEntityRepository;
+    private final JpaVisaApplicationEntityRepository visaApplicationEntityRepository;
     private final JmsTemplate jmsTemplate;
 
-
-    public VisaApplicationRepositoryImpl(AddressEntityRepository addressEntityRepository, ApplicantEntityRepository applicantEntityRepository, PassportEntityRepository passportEntityRepository, PaymentEntityRepository paymentEntityRepository, VisaApplicationEntityRepository visaApplicationEntityRepository, JmsTemplate jmsTemplate) {
+    public VisaApplicationRepositoryImpl(JpaAddressEntityRepository addressEntityRepository, JpaApplicantEntityRepository applicantEntityRepository, JpaPassportEntityRepository passportEntityRepository, JpaPaymentEntityRepository paymentEntityRepository, JpaVisaApplicationEntityRepository visaApplicationEntityRepository, JmsTemplate jmsTemplate) {
         this.addressEntityRepository = addressEntityRepository;
         this.applicantEntityRepository = applicantEntityRepository;
         this.passportEntityRepository = passportEntityRepository;

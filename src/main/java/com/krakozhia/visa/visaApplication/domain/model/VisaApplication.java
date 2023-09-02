@@ -4,7 +4,7 @@ import com.krakozhia.visa.common.AggregateRoot;
 import com.krakozhia.visa.common.exception.DomainException;
 import com.krakozhia.visa.securityCheck.domain.model.SecurityStatus;
 import com.krakozhia.visa.visaApplication.application.event.NotifyApplicantEvent;
-import com.krakozhia.visa.visaApplication.application.event.SecurityCheckEvent;
+import com.krakozhia.visa.visaApplication.application.event.SecurityCheckRequiredEvent;
 import com.krakozhia.visa.visaApplication.application.event.VisaApprovedEvent;
 import com.krakozhia.visa.visaApplication.application.event.VisaRejectedEvent;
 import com.krakozhia.visa.visaApplication.domain.info.*;
@@ -41,7 +41,7 @@ public class VisaApplication extends AggregateRoot<VisaApplicationId> {
 
 
         LocalDate maxIntendedArriveDate = applicationDate.plusMonths(6);
-        // Example: Allow up to 6 months from application
+
         if (intendedArriveDate != null && intendedArriveDate.isAfter(maxIntendedArriveDate)) {
             throw new DomainException("Intended arrival date should be within a reasonable range from the application date.");
         }
@@ -66,7 +66,7 @@ public class VisaApplication extends AggregateRoot<VisaApplicationId> {
             throw new DomainException("Applicant address is required.");
         }
 
-        this.registerEvent(new SecurityCheckEvent(this,this));
+        this.registerEvent(new SecurityCheckRequiredEvent(this,this));
 
     }
 

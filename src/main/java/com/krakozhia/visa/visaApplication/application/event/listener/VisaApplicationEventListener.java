@@ -1,7 +1,7 @@
 package com.krakozhia.visa.visaApplication.application.event.listener;
 
 import com.krakozhia.visa.common.exception.DomainException;
-import com.krakozhia.visa.securityCheck.application.event.SecurityCheckResponseEvent;
+import com.krakozhia.visa.securityCheck.application.event.SecurityCheckCompletedEvent;
 import com.krakozhia.visa.visaApplication.application.VisaApplicationService;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
@@ -14,14 +14,9 @@ public class VisaApplicationEventListener {
         this.visaApplicationService = visaApplicationService;
     }
 
-
     @EventListener
-    public void handle(SecurityCheckResponseEvent checkResponseEvent) throws DomainException {
-
+    public void handle(SecurityCheckCompletedEvent checkResponseEvent) throws DomainException {
         visaApplicationService.processSecurityCheckResponse(checkResponseEvent);
-
     }
-
-
 
 }

@@ -1,7 +1,7 @@
 package com.krakozhia.visa.securityCheck.application.event;
 
 import com.krakozhia.visa.securityCheck.application.SecurityCheckService;
-import com.krakozhia.visa.visaApplication.application.event.SecurityCheckEvent;
+import com.krakozhia.visa.visaApplication.application.event.SecurityCheckRequiredEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
@@ -14,9 +14,9 @@ public class SecurityCheckEventListener {
     }
 
     @EventListener
-    public void handle(SecurityCheckEvent securityCheckEvent) {
+    public void handle(SecurityCheckRequiredEvent securityCheckRequiredEvent) {
 
-        securityCheckService.processSecurityCheckRequest(securityCheckEvent);
+        securityCheckService.processSecurityCheckRequest(securityCheckRequiredEvent);
 
     }
 

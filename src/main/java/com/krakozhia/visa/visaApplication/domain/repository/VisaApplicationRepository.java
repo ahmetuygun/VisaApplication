@@ -8,6 +8,10 @@ import java.util.Optional;
 
 public interface VisaApplicationRepository {
     Long generateId();
+    VisaApplication retrieveVisaApplicationById(VisaApplicationId visaApplicationId) throws DomainException;
+
+    void save(VisaApplication visaApplication);
+
     Optional<VisaFeeReceipt> getVisaFeeReceipt(Long paymentId);
     Optional<Applicant> getApplicant(Long applicantId);
 
@@ -16,10 +20,5 @@ public interface VisaApplicationRepository {
     boolean isCountryEligibleForVisa(String countryCode);
 
     Optional<Address> getAddress(Long applicantId);
-
-    void save(VisaApplication visaApplication);
-
-    VisaApplication retrieveVisaApplicationById(VisaApplicationId visaApplicationId) throws DomainException;
-
     void send(VisaApplication visaApplication);
 }

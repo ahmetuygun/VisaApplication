@@ -1,4 +1,4 @@
-package com.krakozhia.visa.visaApplication.infrastacture.rest;
+package com.krakozhia.visa.visaApplication.infrastacture.rest.command;
 
 import com.krakozhia.visa.visaApplication.domain.info.VisaType;
 import lombok.Data;
