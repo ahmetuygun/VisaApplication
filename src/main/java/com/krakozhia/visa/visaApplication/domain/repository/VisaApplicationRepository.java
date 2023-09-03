@@ -20,5 +20,4 @@ public interface VisaApplicationRepository {
     boolean isCountryEligibleForVisa(String countryCode);
 
     Optional<Address> getAddress(Long applicantId);
-    void send(VisaApplication visaApplication);
 }

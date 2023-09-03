@@ -19,14 +19,14 @@ public class SecurityCheckRepositoryImpl implements SecurityCheckRepository {
     private final JmsSecurityCheckProducer jmsSecurityCheckProducer;
 
     private final JpaSecurityCheckRepository jpaSecurityCheckRepository;
-    @Value("${jms.queue.securityCheck.request.nia}")
-    String destinationNia;
+    @Value("${jms.queue.securityCheck.request.source1}")
+    String destinationSource1;
 
-    @Value("${jms.queue.securityCheck.request.homeland}")
-    String destinationHomeland;
+    @Value("${jms.queue.securityCheck.request.source2}")
+    String destinationSource2;
 
-    @Value("${jms.queue.securityCheck.request.interpol}")
-    String destinationInterpol;
+    @Value("${jms.queue.securityCheck.request.source3}")
+    String destinationSource3;
 
     public SecurityCheckRepositoryImpl(JmsSecurityCheckProducer jmsSecurityCheckProducer, JpaSecurityCheckRepository securityCheckRepository) {
         this.jmsSecurityCheckProducer = jmsSecurityCheckProducer;
@@ -44,9 +44,9 @@ public class SecurityCheckRepositoryImpl implements SecurityCheckRepository {
 
         SecurityCheckEntity securityCheckEntity = SecurityCheckEntity.builder()
                 .id(securityCheck.getId().value())
-                .niaSecurityCheckStatus(securityCheck.niaSecurityCheckStatus())
-                .homelandSecurityCheckStatus(securityCheck.homelandSecurityCheckStatus())
-                .interpolSecurityCheckStatus(securityCheck.interpolSecurityCheckStatus())
+                .source1SecurityCheckStatus(securityCheck.source1SecurityCheckStatus())
+                .source2SecurityCheckStatus(securityCheck.source2SecurityCheckStatus())
+                .source3SecurityCheckStatus(securityCheck.source3SecurityCheckStatus())
                 .visaApplicationRefId(securityCheck.visaApplication().getId().value())
                 .build();
 
@@ -55,13 +55,13 @@ public class SecurityCheckRepositoryImpl implements SecurityCheckRepository {
     }
 
     @Override
-    public void sendForNiaSecurityCheck(SecurityCheck securityCheck) {
-        jmsSecurityCheckProducer.send(toJmsMessage(securityCheck), destinationNia);
+    public void sendForSource1SecurityCheck(SecurityCheck securityCheck) {
+        jmsSecurityCheckProducer.send(toJmsMessage(securityCheck), destinationSource1);
     }
 
     @Override
-    public void sendForHomelandSecurityCheck(SecurityCheck securityCheck) {
-        jmsSecurityCheckProducer.send(toJmsMessage(securityCheck), destinationHomeland);
+    public void sendForSource2SecurityCheck(SecurityCheck securityCheck) {
+        jmsSecurityCheckProducer.send(toJmsMessage(securityCheck), destinationSource2);
     }
 
     private SecurityCheckMessageEntity toJmsMessage(SecurityCheck securityCheck) {
@@ -78,12 +78,12 @@ public class SecurityCheckRepositoryImpl implements SecurityCheckRepository {
     }
 
     @Override
-    public void sendForInterpolSecurityCheck(SecurityCheck securityCheck) {
-        jmsSecurityCheckProducer.send(toJmsMessage(securityCheck), destinationInterpol);
+    public void sendForSource3SecurityCheck(SecurityCheck securityCheck) {
+        jmsSecurityCheckProducer.send(toJmsMessage(securityCheck), destinationSource3);
     }
 
     @Override
-    public Optional<SecurityCheck> retreiveSecurityCheck(SecurityCheckId securityCheckId) {
+    public Optional<SecurityCheck> retrieveSecurityCheck(SecurityCheckId securityCheckId) {
         return Optional.empty();
     }
 }

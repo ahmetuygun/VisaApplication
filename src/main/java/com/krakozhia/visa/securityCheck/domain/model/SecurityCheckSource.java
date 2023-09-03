@@ -1,5 +1,5 @@
 package com.krakozhia.visa.securityCheck.domain.model;
 
 public enum SecurityCheckSource {
-  NIA, INTERPOL, HOMELAND
+  SOURCE1, SOURCE2, SOURCE3
 }

@@ -12,11 +12,11 @@ public interface SecurityCheckRepository {
 
     void save(SecurityCheck securityCheck);
 
-    void sendForNiaSecurityCheck(SecurityCheck securityCheck);
+    void sendForSource1SecurityCheck(SecurityCheck securityCheck);
 
-    void sendForHomelandSecurityCheck(SecurityCheck securityCheck);
+    void sendForSource2SecurityCheck(SecurityCheck securityCheck);
 
-    void sendForInterpolSecurityCheck(SecurityCheck securityCheck);
+    void sendForSource3SecurityCheck(SecurityCheck securityCheck);
 
-    Optional<SecurityCheck> retreiveSecurityCheck(SecurityCheckId securityCheckId);
+    Optional<SecurityCheck> retrieveSecurityCheck(SecurityCheckId securityCheckId);
 }

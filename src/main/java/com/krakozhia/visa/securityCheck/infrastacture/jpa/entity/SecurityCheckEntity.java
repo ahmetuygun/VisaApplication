@@ -19,12 +19,12 @@ public class SecurityCheckEntity {
     private Long visaApplicationRefId;
 
     @Enumerated(EnumType.STRING)
-    private SecurityStatus niaSecurityCheckStatus;
+    private SecurityStatus source1SecurityCheckStatus;
 
     @Enumerated(EnumType.STRING)
-    private SecurityStatus homelandSecurityCheckStatus;
+    private SecurityStatus source2SecurityCheckStatus;
 
     @Enumerated(EnumType.STRING)
-    private SecurityStatus interpolSecurityCheckStatus;
+    private SecurityStatus source3SecurityCheckStatus;
 
 }

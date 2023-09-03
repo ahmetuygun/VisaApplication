@@ -9,7 +9,6 @@ import com.krakozhia.visa.visaApplication.domain.repository.VisaApplicationRepos
 import com.krakozhia.visa.visaApplication.infrastacture.jpa.*;
 import com.krakozhia.visa.visaApplication.infrastacture.jpa.entity.*;
 import jakarta.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
 
@@ -112,21 +111,6 @@ public class VisaApplicationRepositoryImpl implements VisaApplicationRepository 
                 applicant, passportInformation, LocalDate.now(), visaApplicationEntity.getPurposeOfVisit(), visaApplicationEntity.getIntendedArriveDate(), address, visaPayment);
 
        return visaApplication;
-    }
-    @Value("${jms.queue.securityCheck.request.nia}")
-    String destinationNia;
-
-    @Value("${jms.queue.securityCheck.request.homeland}")
-    String destinationHomeland;
-
-    @Value("${jms.queue.securityCheck.request.interpol}")
-    String destinationInterpol;
-    @Override
-    public void send(VisaApplication visaApplication) {
-
-        jmsTemplate.convertAndSend("wwww",destinationNia);
-        jmsTemplate.convertAndSend("wwww",destinationHomeland);
-        jmsTemplate.convertAndSend("wwww",destinationInterpol);
     }
 
 

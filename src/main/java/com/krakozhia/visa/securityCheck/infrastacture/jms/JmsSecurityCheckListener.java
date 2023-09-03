@@ -21,13 +21,13 @@ public class JmsSecurityCheckListener {
     }
 
 
-    @JmsListener(destination = "${jms.queue.securityCheck.response.nia}")
-    public void receiveNiaSecurityCheckResponse(String message) {
+    @JmsListener(destination = "${jms.queue.securityCheck.response.source3}")
+    public void receiveSource3SecurityCheckResponse(String message) {
         SecurityCheckResult checkResult;
 
         try {
             checkResult = new ObjectMapper().readValue(message, SecurityCheckResult.class);
-            securityCheckService.processSecurityCheckResponse(checkResult, SecurityCheckSource.NIA);
+            securityCheckService.processSecurityCheckResponse(checkResult, SecurityCheckSource.SOURCE3);
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         } catch (DomainException e) {
@@ -35,13 +35,13 @@ public class JmsSecurityCheckListener {
         }
     }
 
-    @JmsListener(destination = "${jms.queue.securityCheck.response.interpol}")
-    public void receiveInterpolSecurityCheckResponse(String message) {
+    @JmsListener(destination = "${jms.queue.securityCheck.response.source1}")
+    public void receiveSource1SecurityCheckResponse(String message) {
         SecurityCheckResult checkResult;
 
         try {
             checkResult = new ObjectMapper().readValue(message, SecurityCheckResult.class);
-            securityCheckService.processSecurityCheckResponse(checkResult, SecurityCheckSource.INTERPOL);
+            securityCheckService.processSecurityCheckResponse(checkResult, SecurityCheckSource.SOURCE1);
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         } catch (DomainException e) {
@@ -49,13 +49,13 @@ public class JmsSecurityCheckListener {
         }
     }
 
-    @JmsListener(destination = "${jms.queue.securityCheck.response.homeland}")
-    public void receiveHomelandSecurityCheckResponse(String message) {
+    @JmsListener(destination = "${jms.queue.securityCheck.response.source2}")
+    public void receiveSource2SecurityCheckResponse(String message) {
         SecurityCheckResult checkResult;
 
         try {
             checkResult = new ObjectMapper().readValue(message, SecurityCheckResult.class);
-            securityCheckService.processSecurityCheckResponse(checkResult, SecurityCheckSource.HOMELAND);
+            securityCheckService.processSecurityCheckResponse(checkResult, SecurityCheckSource.SOURCE2);
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         } catch (DomainException e) {

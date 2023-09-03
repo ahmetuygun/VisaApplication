@@ -10,10 +10,9 @@ public class SecurityCheck extends AggregateRoot<SecurityCheckId> {
     private SecurityCheckId securityCheckId;
     private VisaApplication visaApplication;
 
-    // nia : National Intelligence Agency
-    private SecurityStatus niaSecurityCheckStatus;
-    private SecurityStatus homelandSecurityCheckStatus;
-    private SecurityStatus interpolSecurityCheckStatus;
+    private SecurityStatus source1SecurityCheckStatus;
+    private SecurityStatus source2SecurityCheckStatus;
+    private SecurityStatus source3SecurityCheckStatus;
 
 
     public SecurityCheck(SecurityCheckId securityCheckId,
@@ -40,29 +39,29 @@ public class SecurityCheck extends AggregateRoot<SecurityCheckId> {
         registerEvent(checkResponseEvent);
     }
 
-    public void applyNiaSecurityCheck(SecurityStatus status) {
-      this.niaSecurityCheckStatus = status;
+    public void applySource1SecurityCheck(SecurityStatus status) {
+      this.source1SecurityCheckStatus = status;
     }
 
-    public void applyHomelandSecurityCheck(SecurityStatus status) {
-        this.homelandSecurityCheckStatus = status;
+    public void applySource2SecurityCheck(SecurityStatus status) {
+        this.source2SecurityCheckStatus = status;
     }
 
-    public void applyInterpolSecurityCheck(SecurityStatus status) {
-        this.interpolSecurityCheckStatus = status;
+    public void applySource3SecurityCheck(SecurityStatus status) {
+        this.source3SecurityCheckStatus = status;
     }
 
 
-    public SecurityStatus niaSecurityCheckStatus() {
-        return niaSecurityCheckStatus;
+    public SecurityStatus source1SecurityCheckStatus() {
+        return source1SecurityCheckStatus;
     }
 
-    public SecurityStatus homelandSecurityCheckStatus() {
-        return homelandSecurityCheckStatus;
+    public SecurityStatus source2SecurityCheckStatus() {
+        return source2SecurityCheckStatus;
     }
 
-    public SecurityStatus interpolSecurityCheckStatus() {
-        return interpolSecurityCheckStatus;
+    public SecurityStatus source3SecurityCheckStatus() {
+        return source3SecurityCheckStatus;
     }
 
     public VisaApplication visaApplication() {
@@ -71,9 +70,9 @@ public class SecurityCheck extends AggregateRoot<SecurityCheckId> {
 
 
     public SecurityStatus getOverallSecurityClearanceStatus() {
-        if (this.homelandSecurityCheckStatus() == SecurityStatus.PASSED
-                && this.niaSecurityCheckStatus() == SecurityStatus.PASSED
-                && this.interpolSecurityCheckStatus() == SecurityStatus.PASSED) {
+        if (this.source1SecurityCheckStatus() == SecurityStatus.PASSED
+                && this.source2SecurityCheckStatus() == SecurityStatus.PASSED
+                && this.source3SecurityCheckStatus() == SecurityStatus.PASSED) {
             return SecurityStatus.PASSED;
         } else {
             return SecurityStatus.FAILED;

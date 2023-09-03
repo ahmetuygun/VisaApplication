@@ -35,22 +35,22 @@ public class SecurityCheckService {
         SecurityCheck securityCheck = new SecurityCheck(new SecurityCheckId(securityCheckRepository.generateId()), securityCheckRequiredEvent.getVisaApplicationId());
         securityCheck.validateForSubmission();
         securityCheckRepository.save(securityCheck);
-        securityCheckRepository.sendForNiaSecurityCheck(securityCheck);
-        securityCheckRepository.sendForHomelandSecurityCheck(securityCheck);
-        securityCheckRepository.sendForInterpolSecurityCheck(securityCheck);
+        securityCheckRepository.sendForSource1SecurityCheck(securityCheck);
+        securityCheckRepository.sendForSource2SecurityCheck(securityCheck);
+        securityCheckRepository.sendForSource3SecurityCheck(securityCheck);
 
     }
 
     public void processSecurityCheckResponse(SecurityCheckResult checkResult, SecurityCheckSource checkSource) throws DomainException {
 
         SecurityCheck securityCheck = securityCheckRepository.
-                retreiveSecurityCheck(new SecurityCheckId(checkResult.getSecurityCheckId()))
+                retrieveSecurityCheck(new SecurityCheckId(checkResult.getSecurityCheckId()))
                 .orElseThrow(() -> new DomainException("SecurityCheck couldn't find"));
 
         switch (checkSource) {
-            case NIA -> securityCheck.applyNiaSecurityCheck(checkResult.getSecurityStatus());
-            case HOMELAND -> securityCheck.applyHomelandSecurityCheck(checkResult.getSecurityStatus());
-            case INTERPOL -> securityCheck.applyInterpolSecurityCheck(checkResult.getSecurityStatus());
+            case SOURCE1 -> securityCheck.applySource1SecurityCheck(checkResult.getSecurityStatus());
+            case SOURCE2 -> securityCheck.applySource2SecurityCheck(checkResult.getSecurityStatus());
+            case SOURCE3 -> securityCheck.applySource3SecurityCheck(checkResult.getSecurityStatus());
         }
         if (getSecurityCheckFinalised(securityCheck)) {
             securityCheck.finaliseSecurityCheck();
@@ -65,9 +65,9 @@ public class SecurityCheckService {
     }
 
     public Boolean getSecurityCheckFinalised(SecurityCheck securityCheck) {
-        return securityCheck.homelandSecurityCheckStatus() != SecurityStatus.PENDING
-                && securityCheck.niaSecurityCheckStatus() != SecurityStatus.PENDING
-                && securityCheck.interpolSecurityCheckStatus() != SecurityStatus.PENDING;
+        return securityCheck.source1SecurityCheckStatus() != SecurityStatus.PENDING
+                && securityCheck.source2SecurityCheckStatus() != SecurityStatus.PENDING
+                && securityCheck.source3SecurityCheckStatus() != SecurityStatus.PENDING;
     }
 
 
